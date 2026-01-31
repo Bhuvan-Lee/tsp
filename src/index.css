@@ -1,0 +1,325 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* TSP Metal Works - Manufacturing ERP Design System
+   Industrial, professional aesthetic for internal admin use
+   Colors: Deep slate blues, industrial orange accents, muted grays
+*/
+
+@layer base {
+  :root {
+    /* Core Background & Foreground */
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+
+    /* Card & Container Surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    /* Popover & Dropdown */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Primary - Deep Slate Blue */
+    --primary: 215 28% 17%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary - Light Slate */
+    --secondary: 214 32% 91%;
+    --secondary-foreground: 222 47% 11%;
+
+    /* Muted - Subtle Backgrounds */
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Accent - Industrial Orange */
+    --accent: 21 90% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Success - Green for positive metrics */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning - Amber for alerts */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Destructive - Red for errors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Info - Blue for information */
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+
+    /* Border & Input */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 215 28% 17%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar - Dark Industrial */
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 21 90% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 28% 17%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 215 28% 20%;
+    --sidebar-ring: 21 90% 48%;
+
+    /* Status Colors for Manufacturing Workflow */
+    --status-enquiry: 271 81% 56%;
+    --status-design: 199 89% 48%;
+    --status-fabrication: 38 92% 50%;
+    --status-assembly: 21 90% 48%;
+    --status-testing: 262 83% 58%;
+    --status-delivered: 142 76% 36%;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 210 20% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 215 28% 17%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 215 28% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 21 90% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: 212 27% 84%;
+
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 21 90% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 28% 12%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 215 28% 15%;
+    --sidebar-ring: 21 90% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  /* Typography Scale */
+  h1 {
+    @apply text-3xl font-bold tracking-tight;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+
+  h3 {
+    @apply text-xl font-semibold;
+  }
+
+  h4 {
+    @apply text-lg font-medium;
+  }
+}
+
+@layer components {
+  /* KPI Card Styles */
+  .kpi-card {
+    @apply bg-card rounded-lg border border-border p-5 shadow-sm transition-shadow hover:shadow-md;
+  }
+
+  .kpi-value {
+    @apply text-2xl font-bold text-foreground;
+  }
+
+  .kpi-label {
+    @apply text-sm font-medium text-muted-foreground;
+  }
+
+  .kpi-trend-up {
+    @apply text-[hsl(var(--success))] text-sm font-medium;
+  }
+
+  .kpi-trend-down {
+    @apply text-[hsl(var(--destructive))] text-sm font-medium;
+  }
+
+  /* Status Badge Styles */
+  .status-badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+
+  .status-enquiry {
+    @apply bg-purple-100 text-purple-800;
+  }
+
+  .status-design {
+    @apply bg-blue-100 text-blue-800;
+  }
+
+  .status-fabrication {
+    @apply bg-amber-100 text-amber-800;
+  }
+
+  .status-assembly {
+    @apply bg-orange-100 text-orange-800;
+  }
+
+  .status-testing {
+    @apply bg-violet-100 text-violet-800;
+  }
+
+  .status-delivered {
+    @apply bg-green-100 text-green-800;
+  }
+
+  /* Table Enhancements */
+  .data-table {
+    @apply w-full border-collapse;
+  }
+
+  .data-table th {
+    @apply bg-muted px-4 py-3 text-left text-sm font-semibold text-foreground;
+  }
+
+  .data-table td {
+    @apply border-b border-border px-4 py-3 text-sm;
+  }
+
+  .data-table tr:hover td {
+    @apply bg-muted/50;
+  }
+
+  /* Sidebar Navigation */
+  .sidebar-nav-item {
+    @apply flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors;
+    @apply text-[hsl(var(--sidebar-foreground))] hover:bg-[hsl(var(--sidebar-accent))] hover:text-[hsl(var(--sidebar-primary))];
+  }
+
+  .sidebar-nav-item.active {
+    @apply bg-[hsl(var(--sidebar-accent))] text-[hsl(var(--sidebar-primary))];
+  }
+
+  /* Form Styles */
+  .form-section {
+    @apply space-y-4 rounded-lg border border-border bg-card p-6;
+  }
+
+  .form-label {
+    @apply text-sm font-medium text-foreground;
+  }
+
+  /* Action Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-md bg-[hsl(var(--primary))] px-4 py-2 text-sm font-medium text-[hsl(var(--primary-foreground))] shadow transition-colors hover:opacity-90;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center rounded-md bg-[hsl(var(--accent))] px-4 py-2 text-sm font-medium text-[hsl(var(--accent-foreground))] shadow transition-colors hover:opacity-90;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-md bg-[hsl(var(--secondary))] px-4 py-2 text-sm font-medium text-[hsl(var(--secondary-foreground))] shadow-sm transition-colors hover:opacity-90;
+  }
+
+  /* Card Headers */
+  .card-header {
+    @apply flex items-center justify-between border-b border-border pb-4 mb-4;
+  }
+
+  .card-title {
+    @apply text-lg font-semibold text-foreground;
+  }
+
+  /* Widget Containers */
+  .widget {
+    @apply rounded-lg border border-border bg-card p-4;
+  }
+
+  .widget-header {
+    @apply flex items-center justify-between mb-4;
+  }
+
+  .widget-title {
+    @apply text-sm font-semibold text-foreground uppercase tracking-wide;
+  }
+}
+
+/* Ant Design Theme Overrides */
+.ant-layout {
+  background: hsl(var(--background)) !important;
+}
+
+.ant-layout-sider {
+  background: hsl(var(--sidebar-background)) !important;
+}
+
+.ant-menu-dark {
+  background: transparent !important;
+}
+
+.ant-menu-dark .ant-menu-item-selected {
+  background: hsl(var(--sidebar-accent)) !important;
+}
+
+.ant-card {
+  border-radius: var(--radius) !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+.ant-table-thead > tr > th {
+  background: hsl(var(--muted)) !important;
+  font-weight: 600 !important;
+}
+
+.ant-btn-primary {
+  background: hsl(var(--primary)) !important;
+  border-color: hsl(var(--primary)) !important;
+}
+
+.ant-btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* Custom scrollbar for sidebar */
+.sidebar-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: hsl(var(--sidebar-border));
+  border-radius: 2px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--sidebar-accent));
+}
